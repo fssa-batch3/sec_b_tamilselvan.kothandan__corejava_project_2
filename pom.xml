@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>in.fwsa</groupId>
-	<artifactId>demoapp-core</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>in.fssa</groupId>
+	<artifactId>doc4you</artifactId>
+	<version>1.0.0</version>
 
 	
 	<properties>
@@ -10,11 +10,12 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 
-		<sonar.organization>suryapugal22</sonar.organization>
+		<sonar.projectKey>fssa-batch3_sec_b_tamilselvan.kothandan__corejava_project_2</sonar.projectKey>
+		<sonar.organization>fssa-batch3</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -88,35 +89,28 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>3.1.0</version>
-					<configuration>
-						<mainClass>com.fssa.learnJava.project.taskapp.App</mainClass>
-					</configuration>
-				</plugin>
+				
 
 				<plugin>
-				    <groupId>org.jacoco</groupId>
-				    <artifactId>jacoco-maven-plugin</artifactId>
-				    <version>0.8.8</version>
-				    <executions>
-				        <execution>
-				            <goals>
-				                <goal>prepare-agent</goal>
-				            </goals>
-				        </execution>
-				        <execution>
-				            <id>report</id>
-				            <phase>prepare-package</phase>
-				            <goals>
-				                <goal>report</goal>
-				            </goals>
-				        </execution>
-				    </executions>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.8</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
-				
+
 			</plugins>
 		</pluginManagement>
 
