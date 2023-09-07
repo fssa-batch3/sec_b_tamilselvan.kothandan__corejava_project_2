@@ -63,7 +63,7 @@ public class UserService {
 		UserValidator.validateForUpdate(id , newUser);
 		UserDAO userObj = new UserDAO();
 		
-		 userObj.update(id, newUser);
+		 userObj.updateUsers(id, newUser);
 	}
 	
 	 /**
@@ -117,7 +117,13 @@ public class UserService {
 		UserValidator.validateForEmail(email);
 		UserDAO ud = new UserDAO();
 		return ud.findByEmail(email);
+		
 	}
+
+
+	
+
+
 
 
 }

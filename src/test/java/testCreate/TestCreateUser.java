@@ -1,4 +1,4 @@
-package in.fssa.doc4you;
+package testCreate;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,10 +20,10 @@ public class TestCreateUser {
 		UserService userService = new UserService();
 		User user = new User();
 
-		user.setFirstName("tamil");
-		user.setLastName("selvan");
+		user.setFirstName("Kothandan");
+		user.setLastName("nagiaya");
 		user.setEmail(EmailGenerator.generate());
-		user.setPassword("Tamil@#2002");
+		user.setPassword("Kothandan@#2002");
 
 		assertDoesNotThrow(() -> {
 			userService.createUser(user);
@@ -67,7 +67,7 @@ public class TestCreateUser {
 		User user = new User();
 
 		user.setFirstName("");
-		user.setLastName("selvan");
+		user.setLastName("naiyaga");
 		user.setEmail(EmailGenerator.generate());
 		user.setPassword("!@#$1234selvan");
 
@@ -85,7 +85,7 @@ public class TestCreateUser {
 		UserService us = new UserService();
 		User user = new User();
 
-		user.setFirstName("Tamil");
+		user.setFirstName("Kothandan");
 		user.setLastName(null);
 		user.setEmail(EmailGenerator.generate());
 		user.setPassword("!@#$1234Tamil");
@@ -104,7 +104,7 @@ public class TestCreateUser {
 		UserService us = new UserService();
 		User user = new User();
 
-		user.setFirstName("Tamil");
+		user.setFirstName("Ajun");
 		user.setLastName("");
 		user.setEmail(EmailGenerator.generate());
 		user.setPassword("!@#$1234selvan");
@@ -122,8 +122,8 @@ public class TestCreateUser {
 	public void testCreateEmailWithEmailNull() {
 		UserService us = new UserService();
 		User user = new User();
-		user.setFirstName("Tamil");
-		user.setLastName("selvan");
+		user.setFirstName("Praveen");
+		user.setLastName("Kumar");
 		user.setEmail(null);
 		user.setPassword("Tamil**1234");
 
@@ -140,8 +140,8 @@ public class TestCreateUser {
 	public void testCreateUserWithEmailEmpty() {
 		UserService us = new UserService();
 		User user = new User();
-		user.setFirstName("Tamil");
-		user.setLastName("selvan");
+		user.setFirstName("Kishore");
+		user.setLastName("Sugmar");
 		user.setEmail("");
 		user.setPassword("selvan**1234");
 
@@ -174,8 +174,8 @@ public class TestCreateUser {
 	public void testCreateUserWithExistingEmail() {
 		UserService us = new UserService();
 		User user = new User();
-		user.setFirstName("Tamil");
-		user.setLastName("Selvan");
+		user.setFirstName("Inba");
+		user.setLastName("Lokesh");
 		user.setEmail("michael@example.com");
 		user.setPassword("Deepu**1234");
 

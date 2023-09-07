@@ -1,4 +1,4 @@
-package in.fssa.doc4you;
+package testFInd;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;

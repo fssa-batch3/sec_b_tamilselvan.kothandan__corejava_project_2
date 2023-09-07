@@ -25,59 +25,63 @@ public class UserValidator {
      * @throws ValidationException If the user data is invalid or doesn't meet the required criteria.
      */
 	public static void validateForCreate(User user) throws ValidationException {
-		
-		// Check if the user object is null
 		if(user == null) {
 			throw new ValidationException("User cannot be null");
 		}
-		
-		// Check if user ID is negative
 		if(user.getId()<0) {
 			throw new ValidationException("id cannot be negative");
 		}
-
-		// Check if user with the same email already exists
-		UserDAO userDao = new UserDAO();
-		User user1 = userDao.findByEmail(user.getEmail());
+		
+		
+		UserDAO userDAO = new UserDAO();
+		User user1 = userDAO.findByEmail(user.getEmail());
 		if(user1!=null) {
 			throw new ValidationException("User already exists");
 		}
-        // Validate email, password, first name, and last name using StringUtil
-
+		
 		StringUtil.rejectIfInvalidString(user.getEmail(), "email");
 		StringUtil.rejectIfInvalidString(user.getPassword(), "password");
 		StringUtil.rejectIfInvalidString(user.getFirstName(), "first name");
 		StringUtil.rejectIfInvalidString(user.getLastName(), "last name");
 		
-		
-        // Validate email format using regex pattern
-
-		Pattern ptn2 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-		Matcher mtch2 = ptn2.matcher(user.getEmail());
-		if(mtch2.matches()==false) {
-			throw new ValidationException("email doesn't match the required format");
+		Pattern pattern1 = Pattern.compile("^[A-Za-z\\s'-]+$");
+		Matcher matcher1 = pattern1.matcher(user.getFirstName());
+		if(matcher1.matches()==false) {
+			throw new ValidationException("first name should contain only alphabets not numbers and symbols");
 		}
-        // Validate password format using regex pattern
-
+		
+		Pattern pattern2 =  Pattern.compile("^[A-Za-z\\s'-]+$");
+		Matcher matcher2 = pattern2.matcher(user.getLastName());
+		if(matcher2.matches()==false) {
+			throw new ValidationException("last name should contain only alphabets not numbers and symbols");
+		}
+		
+		
+		
+		Pattern pattern3 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+		Matcher matcher3 = pattern3.matcher(user.getEmail());
+		if(matcher3.matches()==false) {
+			throw new ValidationException("email must contain lowercase letters followed by '@' and '.'");
+		}
+		
 		String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^*&+=])(?=\\S+$).{8,}$";
         Pattern compiledPattern = Pattern.compile(pattern);
         Matcher matcher = compiledPattern.matcher(user.getPassword());
 
         if (!matcher.matches()) {
-            throw new ValidationException("Password doesn't match the required format");
+            throw new ValidationException("Password should contain the combination of uppercase , lowercase , numbers and symbols");
         }
 		
 		
 	}
 	
 	
-	 /**
-     * Validates user data before updating user information.
-     *
-     * @param id   The user_id of the user being updated.
-     * @param user The updated User object with new information.
-     * @throws ValidationException If the user data is invalid, doesn't meet the required criteria, or if the user doesn't exist.
-     */
+	/**
+	 * 
+	 * @param id
+	 * @param user
+	 * @throws ValidationException
+	 */
 	public static void validateForUpdate(int id,User user) throws ValidationException{
 		if(user == null) {
 			throw new ValidationException("user cannot be null or empty");
@@ -86,9 +90,8 @@ public class UserValidator {
 			throw new ValidationException("id cannot be negative");
 		}
 		
-		
-		UserDAO userDao = new UserDAO();
-		User user1 = userDao.findById(id);
+		UserDAO userDAO = new UserDAO();
+		User user1 = userDAO.findById(id);
 		if(user1==null) {
 			throw new ValidationException("User doesn't exists");
 		}
@@ -97,7 +100,18 @@ public class UserValidator {
 		StringUtil.rejectIfInvalidString(user.getFirstName(), "first name");
 		StringUtil.rejectIfInvalidString(user.getLastName(), "last name");
 		
-
+		Pattern pattern1 = Pattern.compile("^[A-Za-z\\s'-]+$");
+		Matcher matcher1 = pattern1.matcher(user.getFirstName());
+		if(matcher1.matches()==false) {
+			throw new ValidationException("first name should contain only alphabets not numbers and symbols");
+		}
+		
+		Pattern pattern2 =  Pattern.compile("^[A-Za-z\\s'-]+$");
+		Matcher matcher2 = pattern2.matcher(user.getLastName());
+		if(matcher2.matches()==false) {
+			throw new ValidationException("last name should contain only alphabets not numbers and symbols");
+		}
+		
 		
 		
 		String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^*&+=])(?=\\S+$).{8,}$";
@@ -105,23 +119,22 @@ public class UserValidator {
         Matcher matcher = compiledPattern.matcher(user.getPassword());
 
         if (!matcher.matches()) {
-            throw new ValidationException("Password doesn't match the required format");
+            throw new ValidationException("Password should contain the combination of uppercase , lowercase , numbers and symbols");
         }
 	}
 	
 	
-	 /**
-     * Validates user ID before performing operations that require user identification.
-     *
-     * @param id The user_id to be validated.
-     * @throws ValidationException If the user_id is negative or if the user doesn't exist.
-     */
+	/**
+	 * 
+	 * @param id
+	 * @throws ValidationException
+	 */
 	public static void validateForId(int id) throws ValidationException {
 		if(id <=0) {
 			throw new ValidationException("id cannot be negative");
 		}
-		UserDAO userDao = new UserDAO();
-		User user1 = userDao.findById(id);
+		UserDAO userDAO = new UserDAO();
+		User user1 = userDAO.findById(id);
 		if(user1==null) {
 			throw new ValidationException("User doesn't exists");
 		}
@@ -137,13 +150,12 @@ public class UserValidator {
 	public static void validateForEmail(String email) throws ValidationException{
 		StringUtil.rejectIfInvalidString(email, "email");
 		
-		Pattern ptn2 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-		Matcher mtch2 = ptn2.matcher(email);
-		if(mtch2.matches()==false) {
-			throw new ValidationException("email doesn't match the required format");
+		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+		Matcher matcher1 = pattern1.matcher(email);
+		if(matcher1.matches()==false) {
+			throw new ValidationException("email must contain lowercase letters followed by '@' and '.'");
 		}
 	}
 	
 	
-
 }

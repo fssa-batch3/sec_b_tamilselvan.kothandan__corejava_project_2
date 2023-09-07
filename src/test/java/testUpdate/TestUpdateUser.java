@@ -1,4 +1,4 @@
-package in.fssa.doc4you;
+package testUpdate;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,8 +19,8 @@ public class TestUpdateUser {
     @Test
     public void testUpdateUserWithValidData() {
         User user = new User();
-        user.setFirstName("tamil");
-        user.setLastName("selvan");
+        user.setFirstName("Tamil");
+        user.setLastName("Selvan");
         user.setPassword("Tamil@#2002");
         
         assertDoesNotThrow(() -> UserService.updateUser(2, user));
