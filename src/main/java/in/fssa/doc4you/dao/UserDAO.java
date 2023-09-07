@@ -316,11 +316,7 @@ public class UserDAO implements UserInterface {
 	@Override
 	public void update(int id, User newT) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
-
-	
 
 }

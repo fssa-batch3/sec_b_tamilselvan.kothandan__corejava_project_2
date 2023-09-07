@@ -11,9 +11,6 @@ import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.service.UserService;
 import in.fssa.doc4you.util.EmailGenerator;
 
-
-
-
 public class TestCreateUser {
 	@Test
 	public void testCreateUserWithValidData() {
