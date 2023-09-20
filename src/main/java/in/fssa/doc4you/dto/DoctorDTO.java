@@ -13,6 +13,7 @@ public class DoctorDTO {
 	private String doctorImage;
 	private boolean isDocActive = true;
 	private int doctorId;
+	 
 
 	public Integer getId() {
 		return id;

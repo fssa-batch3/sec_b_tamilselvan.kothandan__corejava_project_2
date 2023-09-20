@@ -1,9 +1,13 @@
 package in.fssa.doc4you.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import in.fssa.doc4you.dao.DoctorDAO;
 import in.fssa.doc4you.dto.DoctorDTO;
 import in.fssa.doc4you.exception.ValidationException;
 import in.fssa.doc4you.model.Doctor;
+import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.util.StringUtil;
 
 public class DoctorValidator  extends UserValidator {
@@ -74,4 +78,39 @@ public class DoctorValidator  extends UserValidator {
 		}
 	}
 	
+	public static void validateForEmail(String email) throws ValidationException {
+		StringUtil.rejectIfInvalidString(email, "email");
+
+		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+		Matcher matcher1 = pattern1.matcher(email);
+		if (matcher1.matches() == false) {
+			throw new ValidationException("email must contain lowercase letters followed by '@' and '.'");
+		}
+	}
+	
+	private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+
+	public static void validate1(DoctorDTO newUser) throws ValidationException {
+
+		if (!validatePassword(newUser.getPassword())) {
+			System.out.println(newUser.getPassword() + "password");
+			throw new ValidationException("Password must be at least 8 characters ex: Njcat#10");
+		}
+
+		StringUtil.rejectIfInvalidString(newUser.getPassword(), "Password");
+	}
+
+	public static boolean validatePassword(String password) throws ValidationException {
+
+		if (StringUtil.isInvalidString(password)) {
+			throw new ValidationException("Invalid password");
+		}
+
+		if (!password.matches(PASSWORD_PATTERN)) {
+			throw new ValidationException("Password must be at least 8 characters and meet specific criteria");
+		}
+
+		return true;
+	}
+
 }

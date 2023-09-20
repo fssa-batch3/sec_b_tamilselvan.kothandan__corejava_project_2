@@ -104,10 +104,11 @@ public class UserDAO implements UserInterface {
 	 *
 	 * @param id      The ID of the user to be updated.
 	 * @param newUser The updated User object containing new user information.
+	 * @return 
 	 * @throws RuntimeException If the user is not found or a database error occurs.
 	 */
 	@Override
-	public void updateUsers(int id, User newUser) {
+	public User updateUsers(int id, User newUser) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
@@ -132,6 +133,7 @@ public class UserDAO implements UserInterface {
 		} finally {
 			ConnectionUtil.close(con, ps);
 		}
+		return newUser;
 	}
 
 	/**
@@ -257,7 +259,7 @@ public class UserDAO implements UserInterface {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				user = new User();
-				user.setId(rs.getInt("d"));
+				user.setId(rs.getInt("id"));
 				user.setFirstName(rs.getString("first_name"));
 				user.setLastName(rs.getString("last_name"));
 				user.setEmail(rs.getString("email"));

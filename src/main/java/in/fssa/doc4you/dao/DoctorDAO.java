@@ -237,7 +237,7 @@ public class DoctorDAO {
 	 * @param email
 	 * @return doctor
 	 */
-	public DoctorDTO findDoctorByEmail(String email) {
+	public static DoctorDTO findDoctorByEmail(String email) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -297,22 +297,27 @@ public class DoctorDAO {
 			ConnectionUtil.close(con, ps);
 		}
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
+		
+		
 }
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
 

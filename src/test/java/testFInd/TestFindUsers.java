@@ -23,7 +23,7 @@ public class TestFindUsers {
 	public void testFindUserByValidId() {
 		UserService us = new UserService();
 		assertDoesNotThrow(() -> {
-			us.getByUserId(2);
+			us.getByUserId(10);
 		});
 	}
 

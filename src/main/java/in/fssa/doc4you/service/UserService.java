@@ -3,6 +3,8 @@ package in.fssa.doc4you.service;
 import java.util.Set;
 
 import in.fssa.doc4you.dao.UserDAO;
+import in.fssa.doc4you.exception.DAOException;
+import in.fssa.doc4you.exception.ServiceException;
 import in.fssa.doc4you.exception.ValidationException;
 import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.validator.UserValidator;
@@ -21,6 +23,8 @@ public class UserService {
 	 * @return The user_id assigned to the newly created user.
 	 * @throws ValidationException If the provided user data is invalid.
 	 */
+	UserDAO userDAO = new UserDAO();
+
 	public int createUser(User newUser) throws ValidationException {
 
 		UserValidator.validateForCreate(newUser);
@@ -111,6 +115,33 @@ public class UserService {
 		UserDAO ud = new UserDAO();
 		return ud.findByEmail(email);
 
+	}
+
+	public User loginUser(String email, String password) throws ServiceException, ValidationException, DAOException {
+		// Validate the phone number and password
+		UserValidator.validateForEmail(email);
+		UserValidator.validatePassword(password);
+
+		// Check if a user with the provided phone number exists in the database
+		User user = userDAO.findByEmail(email);
+		System.out.println(user);
+
+		if (user != null) {
+
+			// If the user exists, check if the provided password matches the stored
+			// password
+			System.out.println(password);
+			if (password.equals(user.getPassword())) {
+				// Authentication successful, return the user
+				return user;
+			} else {
+				// Password does not match
+				throw new ServiceException("Incorrect password");
+			}
+		} else {
+			// User with the provided phone number does not exist
+			throw new ServiceException("User not found");
+		}
 	}
 
 }

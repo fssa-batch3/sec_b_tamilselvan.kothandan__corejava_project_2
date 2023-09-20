@@ -17,11 +17,11 @@ public class TestUpdateUser {
 	@Test
 	public void testUpdateUserWithValidData() {
 		User user = new User();
-		user.setFirstName("Tamil");
-		user.setLastName("Selvan");
-		user.setPassword("Tamil@#2002");
+		user.setFirstName("Michael");
+		user.setLastName("Johnsonn");
+		user.setPassword("Michael@789");
 
-		assertDoesNotThrow(() -> UserService.updateUser(2, user));
+		assertDoesNotThrow(() -> UserService.updateUser(3, user));
 	}
 
 	@Test
