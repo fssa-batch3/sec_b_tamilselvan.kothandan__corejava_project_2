@@ -18,6 +18,7 @@ import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.service.AppointmentService;
 import in.fssa.doc4you.service.DoctorService;
 import in.fssa.doc4you.service.UserService;
+import in.fssa.doc4you.util.NumberUtil;
 import in.fssa.doc4you.util.StringUtil;
 
 public class AppointmentValidator {
@@ -169,7 +170,7 @@ public static boolean validateAppointmentAlreadyExists(LocalTime time , String d
 		if(appointment==null) {
 			throw new ValidationException("appointment cannot be empty");
 		}
-		StringUtil.rejectIfInvalidInteger(id, "appointment id");
+		NumberUtil.rejectIfInvalidInteger(id, "appointment id");
 		AppointmentDTO app = AppointmentService.getAppointmentByAppointmentId(id);
 		
 		if(app==null) {

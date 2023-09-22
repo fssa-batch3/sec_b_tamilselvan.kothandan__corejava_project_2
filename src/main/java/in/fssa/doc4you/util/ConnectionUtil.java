@@ -17,6 +17,7 @@ public class ConnectionUtil {
 		String password = System.getenv("DATABASE_PASSWORD");
 		
 		try {
+			System.out.println("url:"+ url);
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			 connection = DriverManager.getConnection(url, userName, password);
 
@@ -54,6 +55,10 @@ public class ConnectionUtil {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(getConnection());
 	}
 	
 }

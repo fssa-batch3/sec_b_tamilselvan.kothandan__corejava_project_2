@@ -208,7 +208,7 @@ public class DoctorDAO {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				dd = new DoctorDTO();
-				dd.setId(rs.getInt("doctor_id"));
+				dd.setDoctorId(rs.getInt("doctor_id"));
 				dd.setId(rs.getInt("d.id"));
 				dd.setFirstName(rs.getString("first_name"));
 				dd.setLastName(rs.getString("last_name"));
@@ -245,13 +245,14 @@ public class DoctorDAO {
 		DoctorDTO dd = null;
 		try {
 			con = ConnectionUtil.getConnection();
-			String query = "SELECT doctor_id,d.id,qualifications,experience,department,doctor_image,first_name,last_name,email FROM users AS u INNER JOIN doctors AS d on u.id = d.id WHERE d.is_active = 1 AND u.email = ?";
+			String query = "SELECT d.doctor_id, d.id, d.qualifications, d.experience, d.department, d.doctor_image, u.first_name, u.last_name, u.email,\r\n"
+					+ " u.password ,d.is_active FROM users AS u INNER JOIN doctors AS d ON u.id = d.id WHERE d.is_active = 1 AND u.email = ?";
 			ps = con.prepareStatement(query);
 			ps.setString(1, email);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				dd = new DoctorDTO();
-				dd.setId(rs.getInt("doctor_id"));
+				dd.setDoctorId(rs.getInt("doctor_id"));
 				dd.setId(rs.getInt("d.id"));
 				dd.setFirstName(rs.getString("first_name"));
 				dd.setLastName(rs.getString("last_name"));

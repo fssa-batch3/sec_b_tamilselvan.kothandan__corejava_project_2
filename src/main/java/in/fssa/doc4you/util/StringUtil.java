@@ -1,8 +1,6 @@
 package in.fssa.doc4you.util;
 
 
-import java.time.LocalDate;
-
 import in.fssa.doc4you.exception.ValidationException;
 
 public class StringUtil {

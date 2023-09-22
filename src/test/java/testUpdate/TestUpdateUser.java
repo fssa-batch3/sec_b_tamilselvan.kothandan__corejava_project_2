@@ -12,8 +12,6 @@ import in.fssa.doc4you.service.UserService;
 
 public class TestUpdateUser {
 
-	private UserService userService = new UserService();
-
 	@Test
 	public void testUpdateUserWithValidData() {
 		User user = new User();
@@ -73,7 +71,7 @@ public class TestUpdateUser {
 		user.setLastName(null);
 		user.setPassword("!@#$1234Tamil");
 
-		Exception exception = assertThrows(ValidationException.class, () -> userService.updateUser(3, user));
+		Exception exception = assertThrows(ValidationException.class, () -> UserService.updateUser(3, user));
 
 		String expectedMessage = "last name cannot be null or empty";
 		String actualMessage = exception.getMessage();

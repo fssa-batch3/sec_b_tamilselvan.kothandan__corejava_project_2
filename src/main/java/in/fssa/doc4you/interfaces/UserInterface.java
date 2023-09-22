@@ -1,7 +1,5 @@
 package in.fssa.doc4you.interfaces;
 
-import java.util.Set;
-
 import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.model.UserEntity;
 

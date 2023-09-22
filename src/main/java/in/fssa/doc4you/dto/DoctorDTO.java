@@ -120,7 +120,7 @@ public class DoctorDTO {
 		return "DoctorDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
 				+ ", password=" + password + ", isActive=" + isActive + ", qualifications=" + qualifications
 				+ ", experience=" + experience + ", department=" + department + ", doctorImage=" + doctorImage
-				+ ", isDocActive=" + isDocActive;
+				+ ", isDocActive=" + isDocActive+", Doctor_id="+ doctorId;
 	}
 
 }

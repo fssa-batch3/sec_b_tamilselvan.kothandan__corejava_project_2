@@ -7,7 +7,7 @@ import in.fssa.doc4you.dao.DoctorDAO;
 import in.fssa.doc4you.dto.DoctorDTO;
 import in.fssa.doc4you.exception.ValidationException;
 import in.fssa.doc4you.model.Doctor;
-import in.fssa.doc4you.model.User;
+
 import in.fssa.doc4you.util.StringUtil;
 
 public class DoctorValidator  extends UserValidator {
@@ -83,7 +83,7 @@ public class DoctorValidator  extends UserValidator {
 
 		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
 		Matcher matcher1 = pattern1.matcher(email);
-		if (matcher1.matches() == false) {
+		if (!matcher1.matches()) {
 			throw new ValidationException("email must contain lowercase letters followed by '@' and '.'");
 		}
 	}

@@ -6,15 +6,12 @@ import com.google.protobuf.ServiceException;
 
 import in.fssa.doc4you.dao.DoctorDAO;
 import in.fssa.doc4you.dto.DoctorDTO;
-import in.fssa.doc4you.exception.DAOException;
 import in.fssa.doc4you.exception.ValidationException;
 import in.fssa.doc4you.model.Doctor;
 import in.fssa.doc4you.model.User;
 import in.fssa.doc4you.validator.DoctorValidator;
 
 public class DoctorService {
-	private DoctorDAO doctorDAO;
-
 	public void createDoctor(DoctorDTO newDoctor) throws ValidationException {
 		UserService userService = new UserService();
 
@@ -106,7 +103,7 @@ public class DoctorService {
 	public DoctorDTO getDoctorByEmail(String email) throws ValidationException {
 		DoctorValidator.validateForEmail(email);
 		DoctorDAO doctorDAO = new DoctorDAO();
-		return doctorDAO.findDoctorByEmail(email);
+		return DoctorDAO.findDoctorByEmail(email);
 	}
 
 	public static double convertYearToMonth(double year) {

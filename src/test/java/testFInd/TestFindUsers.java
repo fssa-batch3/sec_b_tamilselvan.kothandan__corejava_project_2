@@ -23,7 +23,7 @@ public class TestFindUsers {
 	public void testFindUserByValidId() {
 		UserService us = new UserService();
 		assertDoesNotThrow(() -> {
-			us.getByUserId(10);
+			UserService.getByUserId(10);
 		});
 	}
 
@@ -31,7 +31,7 @@ public class TestFindUsers {
 	public void testFindUserByInvalidId() {
 		UserService us = new UserService();
 		Exception ex = assertThrows(ValidationException.class, () -> {
-			us.getByUserId(-90);
+			UserService.getByUserId(-90);
 		});
 		String m1 = "id cannot be negative";
 		String m2 = ex.getMessage();
@@ -42,7 +42,7 @@ public class TestFindUsers {
 	public void testFindUserWithValidEmail() {
 		UserService us = new UserService();
 		assertDoesNotThrow(() -> {
-			us.getByUserEmail("tamil@gmail.com");
+			UserService.getByUserEmail("tamil@gmail.com");
 		});
 	}
 
@@ -50,7 +50,7 @@ public class TestFindUsers {
 	public void testFindUserWithNullEmail() {
 		UserService us = new UserService();
 		Exception ex = assertThrows(ValidationException.class, () -> {
-			us.getByUserEmail(null);
+			UserService.getByUserEmail(null);
 		});
 		String m1 = "email cannot be null or empty";
 		String m2 = ex.getMessage();
