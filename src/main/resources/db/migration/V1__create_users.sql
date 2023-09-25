@@ -2,7 +2,7 @@ create table if not exists doctors(
 doctor_id int auto_increment primary key,
 id int,
 FOREIGN KEY (id) REFERENCES users (id),
-qualifications varchar(30) not null,
+qualifications varchar(255) not null,
 experience int not null,
 department varchar(30) not null,
 is_active boolean default true,
