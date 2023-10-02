@@ -64,13 +64,13 @@ public class AppointmentService {
 		appointmentDAO.createAppointment(appointment);
 	}
 	
-	public  Set<AppointmentDTO> getAllAppointmentsByDoctorId(int doctorId) throws ValidationException{
+	public  List<AppointmentDTO> getAllAppointmentsByDoctorId(int doctorId) throws ValidationException{
 		AppointmentValidator.validateExistenceOfDoctor(doctorId);
 		AppointmentDAO appointmentDAO = new AppointmentDAO();
 		return appointmentDAO.findAllAppointmentByDoctorId(doctorId);
 	}
 	
-	public  Set<AppointmentDTO> getAllAppointmentsByUserId(int userId) throws ValidationException{
+	public  List<AppointmentDTO> getAllAppointmentsByUserId(int userId) throws ValidationException{
 		AppointmentValidator.validateExistenceOfUser(userId);
 		AppointmentDAO appointmentDAO = new AppointmentDAO();
 		return appointmentDAO.findAllAppointmentByUserId(userId); 

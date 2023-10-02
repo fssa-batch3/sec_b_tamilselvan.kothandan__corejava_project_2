@@ -18,6 +18,7 @@ public class AppointmentDTO {
 	private String endTime;
 	private Status status;
 	private String reasonForRejection;
+	private boolean userIsActive;
 	
 	
 	public int getId() {
@@ -101,6 +102,12 @@ public class AppointmentDTO {
 		return "\n[id=" + id + ", userId=" + userId + ", patientName=" + patientName 
 				 + ", mobileNumber=" + mobileNumber + ", doctorName=" + doctorName + ", doctorId="
 				+ doctorId + ", reasonForConsultation=" + reasonForConsultation +  ", dateOfConsultation=" + dateOfConsultation + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", status=" + status + ", reasonForRejection=" + reasonForRejection + "]";
+				+ ", endTime=" + endTime + ", status=" + status + ", reasonForRejection=" + reasonForRejection +"userIsActive= "+userIsActive+ "]";
 }
+	public boolean isUserIsActive() {
+		return userIsActive;
+	}
+	public void setUserIsActive(boolean userIsActive) {
+		this.userIsActive = userIsActive;
+	}
 }

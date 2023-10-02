@@ -1,5 +1,6 @@
 package in.fssa.doc4you.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.google.protobuf.ServiceException;
@@ -28,9 +29,9 @@ public class DoctorService {
 		doctorDAO.create(newDoctor, userId);
 	}
 	
-	public Set<DoctorDTO> findAllByDoctors() throws ServiceException{
+	public List<DoctorDTO> findAllByDoctors() throws ServiceException{
 		DoctorDAO doctorDAO = new DoctorDAO();
-		Set<DoctorDTO>  doctors = null;
+		List<DoctorDTO>  doctors = null;
 		try {
 			doctors = doctorDAO.findAll();
 		} catch (ValidationException e) {
@@ -40,9 +41,9 @@ public class DoctorService {
 		return doctors;
 	}
 
-	public Set<DoctorDTO> listAllDoctor() throws ValidationException {
+	public List<DoctorDTO> listAllDoctor() throws ValidationException {
 		DoctorDAO doctorDAO = new DoctorDAO();
-		Set<DoctorDTO> doctorList = doctorDAO.findAll();
+		List<DoctorDTO> doctorList = doctorDAO.findAll();
 		return doctorList;
 	}
 

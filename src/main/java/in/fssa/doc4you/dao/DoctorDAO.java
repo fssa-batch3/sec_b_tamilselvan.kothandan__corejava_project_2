@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 import in.fssa.doc4you.dto.DoctorDTO;
 import in.fssa.doc4you.exception.ValidationException;
 import in.fssa.doc4you.model.Doctor;
@@ -47,11 +46,11 @@ public class DoctorDAO {
 		}
 	}
 	
-	public Set<DoctorDTO> findAll() throws ValidationException {
+	public List<DoctorDTO> findAll() throws ValidationException {
 	    Connection con = null;
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
-	    Set<DoctorDTO> doctorList = null;
+	    List<DoctorDTO> doctorList = null;
 	    try {
 	        con = ConnectionUtil.getConnection();
 	        String query = "SELECT\r\n"
@@ -72,7 +71,7 @@ public class DoctorDAO {
 	            + "WHERE\r\n"
 	            + "    d.is_active = 1;\r\n";
 	        ps = con.prepareStatement(query);
-	        doctorList = new HashSet<DoctorDTO>();
+	        doctorList = new ArrayList<DoctorDTO>();
 	        rs = ps.executeQuery();
 	        while (rs.next()) {
 	            DoctorDTO dto = new DoctorDTO();

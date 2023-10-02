@@ -76,12 +76,12 @@ public static boolean validateAppointmentAlreadyExists(LocalTime time , String d
 		}
 		
 		// reason for consultation validation
-		StringUtil.rejectIfInvalidString(appointment.getReasonForConsultation(), "reason for consultation");
-		Pattern sentencePattern = Pattern.compile("^[a-zA-Z0-9,\\.\\s]+$");
-		Matcher sentenceMatcher  = sentencePattern.matcher(appointment.getReasonForConsultation());
-		if(sentenceMatcher.matches()==false) {
-			throw new ValidationException("reason should not include any special symbols except ',' and '.'");
-		}
+//		StringUtil.rejectIfInvalidString(appointment.getReasonForConsultation(), "reason for consultation");
+//		Pattern sentencePattern = Pattern.compile("^[a-zA-Z0-9,\\._\\s]+$");
+//		Matcher sentenceMatcher  = sentencePattern.matcher(appointment.getReasonForConsultation());
+//		if(sentenceMatcher.matches()==false) {
+//			throw new ValidationException("reason should not include any special symbols except ',' and '.'");
+//		}
 		
 		// date of consultation validation
 		if(appointment.getDateOfConsultation()==null || "".equals(appointment.getDateOfConsultation())) {
