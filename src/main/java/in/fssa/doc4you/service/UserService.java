@@ -136,11 +136,11 @@ public class UserService {
 				return user;
 			} else {
 				// Password does not match
-				throw new ServiceException("Incorrect password");
+				throw new ServiceException("Incorrect Login Credentials");
 			}
 		} else {
 			// User with the provided phone number does not exist
-			throw new ServiceException("User not found");
+			throw new ServiceException("Incorrect Login Credentials");
 		}
 	}
 

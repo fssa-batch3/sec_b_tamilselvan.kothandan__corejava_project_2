@@ -113,7 +113,7 @@ public class AppointmentDAO implements AppointmentInterface {
 	public List<AppointmentDTO> findAllAppointmentByDoctorId(int doctorId) {
 		try (Connection con = ConnectionUtil.getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"SELECT a.id, u.first_name, u.last_name, a.* FROM appointments AS a INNER JOIN users AS u ON u.id = a.patient_id WHERE a.doctor_id = ?")) {
+						"SELECT a.id, u.first_name, u.last_name, a.* FROM appointments AS a  INNER JOIN users AS u ON u.id = a.patient_id WHERE a.doctor_id = ?")) {
 			String doctorName = DoctorService.getDoctorById(doctorId).fullName();
 			ps.setInt(1, doctorId);
 
@@ -151,7 +151,8 @@ public class AppointmentDAO implements AppointmentInterface {
 	public List<AppointmentDTO> findAllAppointmentByUserId(int userId) {
 		try (Connection con = ConnectionUtil.getConnection();
 				PreparedStatement ps = con.prepareStatement(
-						"SELECT a.id, u.first_name, u.last_name, a.* FROM appointments AS a INNER JOIN users AS u ON u.id = a.patient_id, u.is_active=a.is_active WHERE a.patient_id = ? ORDER BY a.date_of_consultation ASC")) {
+						"SELECT a.id, u.first_name, u.last_name, a.* FROM appointments AS a INNER JOIN users AS u ON u.id = a.patient_id WHERE a.patient_id = ? ORDER BY a.date_of_consultation ASC;"
+)) {
 			ps.setInt(1, userId);
 
 			List<AppointmentDTO> listOfAppointments = new ArrayList<>();

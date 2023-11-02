@@ -106,7 +106,7 @@ public class UserValidator {
 			throw new ValidationException("last name should contain only alphabets not numbers and symbols");
 		}
 
-		String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^*&+=])(?=\\S+$).{8,}$";
+		String pattern = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,10}$";
 		Pattern compiledPattern = Pattern.compile(pattern);
 		Matcher matcher = compiledPattern.matcher(user.getPassword());
 
@@ -148,7 +148,7 @@ public class UserValidator {
 		}
 	}
 
-	private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+	private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,10}$";
 
 	public static void validate(User newUser) throws ValidationException {
 
